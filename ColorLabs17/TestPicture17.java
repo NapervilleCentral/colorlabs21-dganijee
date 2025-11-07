@@ -6,7 +6,7 @@
  * @author (Kevin Hayes)
  * @version (10-19-2016)
  */
-import java.awt.*;
+import java.awt.*; // the color class in awt library
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
 public class TestPicture17
@@ -19,23 +19,27 @@ public class TestPicture17
   public static void main(String[] args)
   {
       //opens picture using a dialog box
-      /**/
+      /*
      String fileName = FileChooser.pickAFile();
      Picture pictObj = new Picture(fileName);
-     pictObj.explore();
+     pictObj.explore();*/
 
      //opens a pictue using a path
      //Picture apic = new Picture("C:\\Users\\khayes\\Favorites\\Documents\APCS- Java\chap03\Curriclum 2013\Picture Color labs\images\\beach.jpg");
      
-     //relative path
+     // relative MUST be in the same directory
+     //relative path            dir/folder/file
      Picture apic = new Picture("images\\beach.jpg");
      Picture ferris1 = new Picture("images/2000 ferris wheel2.jpg");
-     Picture ferris2 = new Picture("images/2000 ferris wheel2.jpg");
+     Picture moto = new Picture("images/blueMotorcycle.jpg");
      Picture ferris3 = new Picture("images/2000 ferris wheel2.jpg");
 
-     //apic.explore();
-     ferris1.explore();
      
+     apic.explore();//!!!!!!!!!!!!!!!!! DISPLAYS THE PICTURE
+     ferris1.explore();
+     moto.explore();
+     
+     //to change color of pic get all of the pixels
      //makes an array of pixels
      Pixel[] pixels;
      //gets pixels from picture and assigns to pixels array
@@ -46,13 +50,26 @@ public class TestPicture17
 
 
     /**/
-        //access each index
+        //access each index, array notation
     System.out.println(pixels[17]);
-    //access each pixel
+    //access each pixel, picture method .getPixel()
+    
     Pixel spot = ferris1.getPixel(100,100);
+    Color ltsteel = new Color(176,196,222);
+    Pixel spot50 = ferris1.getPixel(50,50);
     
     System.out.println(pixels[17].getColor());
     System.out.println(spot);
+    
+    Pixel spot17 = pixels[17];
+    spot17.setRed(200);
+    spot17.setBlue(150);
+    spot17.setGreen(175);
+    ferris1.explore();
+    
+    spot.setColor(Color.yellow);
+    spot50.setColor(ltsteel);
+    ferris1.explore();
 /*
     pixels[17].setColor(Color.blue);
     spot.setColor(new Color(252,252,252));
