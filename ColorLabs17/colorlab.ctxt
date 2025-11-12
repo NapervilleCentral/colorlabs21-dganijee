@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=colorlab
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ colorlab\ here.\r\n\r\n\ @author\ Danial\ Ganijee\r\n\ @version\ 11/11/2025\r\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
 numComments=2

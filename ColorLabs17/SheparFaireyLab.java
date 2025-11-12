@@ -2,8 +2,8 @@
 /**
  * Write a description of class SheparFaireyLab here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Danial Ganijee 
+ * @version 11/12/2025
  */
 import java.awt.*;
 import java.util.*;
@@ -11,39 +11,40 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
 
 public class SheparFaireyLab
 {
-    /**
-     * main method, to test the picture
-     *  
-     */
     public static void main(String[] args)
     {
+        /*method 1 change (balanced approach)*/
+        Picture danial = new Picture("images/danial.jpg");
+        Pixel[] pixels; pixels = danial.getPixels(); // create array of pixels for selfie 
         
-         //opens selfie picture 
-          /**/
-         String fileName = FileChooser.pickAFile();
-         Picture pictObj = new Picture(fileName);
-         pictObj.explore();
+        //make SF colors
+        Color darkblue = new Color(0,0,139); // range 0-64
+        Color red = new Color(230,0,0); // range 64-128
+        Color lightblue = new Color(173,216,230); // range 128-192 
+        Color offwhite = new Color(230,230,230); //range 192-255
+        
+        // set greyscale values
+        for (Pixel dot : pixels)
+        {
+            int avg = (int)((dot.getRed() + dot.getGreen() + dot.getBlue()) / 3.0);
+            if (avg < 64)
+                dot.setColor(darkblue);
+            else if (avg < 128)
+                dot.setColor(red);
+            else if (avg < 192)
+                dot.setColor(lightblue);
+            else
+                dot.setColor(offwhite);
+            //Color greyscale = new Color(avg,avg,avg);
+            //dot.setColor(greyscale);
+            
+        }
+        danial.explore();
+        
+        
+        /*method 2 change (find min and max)*/
          
-         //relative path
-         Picture apic = new Picture("images\\beach.jpg");
-         //change with selfie picture
-         Picture me = new Picture("images/beach.jpg");
-         Picture me1 = new Picture("images/beach.jpg");
-         Picture me2 = new Picture("images/beach.jpg");
-         
-         /**
-          * method 1 change
-          * 
-          */
-         
-         /**
-          * method 2 change
-          * 
-          */
-         
-         /**
-          * custom color palette
-          */
+        /*custom color palette*/
 
          
     }//main       

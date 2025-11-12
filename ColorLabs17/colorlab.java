@@ -4,6 +4,9 @@
  * @author Danial Ganijee
  * @version 11/11/2025
  */
+import java.awt.*;
+import java.util.*;
+import java.util.List; // resolves problem with java.awt.List and java.util.List
 public class colorlab
 {
     public static void main (String[] args)
@@ -63,8 +66,36 @@ public class colorlab
         beach.explore();
         
         // range of pixels
+        Picture ferris = new Picture("images/ferris.jpg");
+        Pixel[] pixels4;
+        pixels4 = ferris.getPixels();
+        Color sky = new Color(135, 206, 235);
+        for (Pixel dot: pixels4)
+        {
+            int R = dot.getRed();
+            if (R < 40)
+            {
+                dot.setColor(sky);
+            }
+        }
+        ferris.explore();
         
         // blueify your face
+        Picture barbara = new Picture("images/barbaraS.jpg");
+        Pixel[] pixels5;
+        pixels5 = barbara.getPixels();
+        for (Pixel dot: pixels5)
+        {
+            int Red = dot.getRed();
+            if (Red < 220 && Red > 190)
+            {
+                int Blue = dot.getBlue() + 150;
+                dot.setBlue(Blue);
+            }
+        }
+        barbara.explore();
+        
+        
         
         
     }
