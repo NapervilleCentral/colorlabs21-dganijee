@@ -37,6 +37,7 @@ public class ShepardFaireyLab
                 dot.setColor(offwhite);
         }
         danial.explore();
+        //danial.write("images/sf/method1.jpg");
         
         //---------------------------------------------------------------------
         /*method 2 change (find min and max)*/
@@ -73,6 +74,7 @@ public class ShepardFaireyLab
                 dot.setColor(offwhite);
         }
         danial2.explore();
+        //danial.write("images/sf/method2.jpg");
     
         
         //---------------------------------------------------------------------
@@ -87,7 +89,6 @@ public class ShepardFaireyLab
         Color c3 = new Color(21,165,232); // range 104-155
         Color c4 = new Color(127,215,240); //range 156-207
         Color c5 = new Color(220,243,250); //range 208-255
-        
         
         // find greyscale values and set colors
         for (Pixel dot : pixels3)
@@ -105,6 +106,6 @@ public class ShepardFaireyLab
                 dot.setColor(c5);
         }
         danial3.explore();
-        danial3.write("images/sf/sf3_USETHIS.jpg");
+        danial3.write("images/sf/sf_FINAL_USE_THIS.jpg");
     }//main       
 }//class

@@ -21,4 +21,6 @@ sf1 - I wanted to go for a thermal design, hence why I picked red, orange, green
 
 sf2 - I think I did a much better job with making the palette more consistent. You can start to see more depth, BUT I didn't vary the colors in shade enough. A lot of depth and shadows gets washed out because I didn't pick different enough shades.
 
-sf3 - I did a much better job. Each one of the five colors are very different In shade, despite all being blue. You can clearly see the depth in this picture, even seeing the cameras and the "lab rules" sign in the back. You can also see how the lighting hits my face based on the shades. I am way more proud of this piece than the other two.
+sf3 - I tried to use lighter colors, but I think there can still be more variety. I stayed with the same shade of blue and messed around with different light/darker iterations of that shade in the RGB color picker, but I think if I used similar colors and also different shades of that color it would look a lot better. This is much better than sf2 but I can still make it better.
+
+sf_FINAL_USE_THIS - I did a much better job, it is a much better and refined iteration compared to the last one. Each one of the five colors are very different In shade, despite all being blue. You can clearly see the depth in this picture, even seeing the cameras and the "lab rules" sign in the back. You can also see how the lighting hits my face based on the shades. I am way more proud of this piece than the other two.
