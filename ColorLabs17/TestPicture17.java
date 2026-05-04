@@ -29,33 +29,35 @@ public class TestPicture17
      
      //relative path!!!! (ON TEST)
      //                          dir/folder/file
-     Picture beach = new Picture("images\\beach.jpg");
-     Picture ferris1 = new Picture("images/2000 ferris wheel2.jpg");
-     Picture moto = new Picture("images/redMotorcycle.jpg");
-     Picture wall = new Picture("images/wall.jpg");
+     //Picture beach = new Picture("images\\beach.jpg");
+     //Picture ferris1 = new Picture("images/2000 ferris wheel2.jpg");
+     //Picture moto = new Picture("images/redMotorcycle.jpg");
+     //Picture wall = new Picture("images/wall.jpg");
+     Picture bron = new Picture("images\\bron.jpg");
+     Picture canvas = new Picture("images\\canvas.jpg");
      //displays the picture
      //apic.explore();
      //ferris1.explore();
      //moto.explore();
      
      //makes an array of pixels
-     Pixel[] pixels;
+     //Pixel[] pixels;
      //gets pixels from picture and assigns to pixels array
-     pixels = ferris1.getPixels();
+     //pixels = ferris1.getPixels();
      
-     Pixel[] Mpixels;
-     Mpixels = moto.getPixels();
+     //Pixel[] Mpixels;
+     //Mpixels = moto.getPixels();
      
-     Pixel[] Bpixels;
-     Bpixels = beach.getPixels();
+     //Pixel[] Bpixels;
+     //Bpixels = beach.getPixels();
      
-     Pixel[] Wpixels;
-     Wpixels = wall.getPixels();
+     //Pixel[] Wpixels;
+     //Wpixels = wall.getPixels();
      
      //how many pixels or how large array
-    System.out.println("This is a large array"+pixels.length  );
+    //System.out.println("This is a large array"+pixels.length  );
     
-    int red, green, blue;
+    //int red, green, blue;
     
     /*
         //access each index
@@ -162,6 +164,7 @@ public class TestPicture17
      wall.explore();
 /**/
     //DARKEN()
+    /*
      wall.explore();
      int avg;
      for (Pixel p : Wpixels)
@@ -174,8 +177,17 @@ public class TestPicture17
         p.setGreen(avg);
         p.setRed(avg);
      }
-     wall.explore();
-     
+     wall.explore();*/
+    }
+    /**
+     * Method to mirror around a vertical line in the middle of the pictre based on the width
+     */
+    public void mirrorVertical(Picture apic)
+    {
+        int width = apic.getWidth();
+        int mirrorPoint = width/2;
+        
+    }
      
  /**
   * Method to clear red from picture
@@ -221,8 +233,8 @@ final double  FACTOR = .5;
 
   /**/ 
     //write/save a picture as a file
-    ferris1.explore();
-    ferris1.write("images/ferrisNEW.jpg");
+    //ferris1.explore();
+    //ferris1.write("images/ferrisNEW.jpg");
     
 
 
