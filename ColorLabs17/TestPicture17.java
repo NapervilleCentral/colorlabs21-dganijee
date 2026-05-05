@@ -240,4 +240,4 @@ final double  FACTOR = .5;
 
     /**/
   }//main
-}//class
+//}//class

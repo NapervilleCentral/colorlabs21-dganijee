@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Parthenon
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=apic
+comment2.target=Picture\ mirrorVertical(Picture)
+comment2.text=\r\n\ Method\ to\ mirror\ around\ a\ vertical\ line\ in\ the\ middle\ of\ the\ picture\ based\ on\ the\ width\r\n
+numComments=3

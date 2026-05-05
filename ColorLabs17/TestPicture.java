@@ -72,4 +72,27 @@ public class TestPicture
         }
         
     }
+    
+    /**
+     * Add two ints to the parameters and that's the place you want target to go onto the canvas
+     */
+    public static void copytoCanvasSmaller(Picture source, Picture target) 
+    {
+        // recursion copy to a x,y on the source
+        Pixel sourcePix = null;
+        Pixel targetPix = null;
+        
+        // loop through the columns (targetX is starting point on Canvas) sourceX+=2 for make smaller, sourceX+0.5 for make larger
+        for (int sourceX = 0, targetX = 0; sourceX < source.getWidth(); sourceX+=2, targetX++)
+        {
+            // loop through the rows                                        sourceY+=2 for make smaller, sourceY+0.5 for make larger
+            for (int sourceY = 0, targetY = 0; sourceY < source.getHeight(); sourceY+=2, targetY++)
+            {
+                sourcePix = source.getPixel(sourceX, sourceY);
+                targetPix = target.getPixel(targetX, targetY);
+                targetPix.setColor(sourcePix.getColor());
+            }
+        }
+        
+    }
 }
