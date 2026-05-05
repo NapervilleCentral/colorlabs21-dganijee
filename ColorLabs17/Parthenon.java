@@ -33,7 +33,7 @@ public class Parthenon
         
         
         // loop through all the rows
-        for (int y = 0; y < apic.getHeight(); y++)
+        for (int y = 0; y < 98; y++)
         {
             // loop from 0 to the middle (mirror point)
             for (int x = 0; x < mirrorPoint; x++)
