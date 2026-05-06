@@ -14,47 +14,101 @@ public class Collage
     
     public static void main(String[] args)
     {
-        Picture bron = new Picture("images\\collage\\bron.jpg");
+        Picture bron1 = new Picture("images\\collage\\bron.jpg");
         Picture canvas = new Picture("images\\collage\\canvas.jpg");
         
-        // pic 1, mirror around vertical point
-        mirrorVertical(bron);
-        copytoCanvas(bron, canvas);
-        //bron.write("mirroredLeBron1");
+        // ------pic 1, mirror around vertical point------
+        mirrorVertical(bron1);
+        copytoCanvas(0,0,bron1, canvas);
+        //bron1.write("mirroredLeBron1");
         
-        // pic 2,blend with Micheal Jordan
-        blend(new Picture("images\\collage\\goat.jpg");
+        // ------pic 2,blend with goat------
+        Picture bron2 = new Picture("images\\collage\\bron.jpg");
+        blend(bron2, new Picture("images\\collage\\goat.jpg"));
+        copytoCanvas(bron2.getWidth(),0, bron2, canvas);
+        //bron2.write("blendedLeBron2");
         
-        copytoCanvas(bron, canvas);
+        // ------pic 3, shephard fairey------
+        Picture bron3 = new Picture("images\\collage\\bron.jpg");
+        shephard(bron3);
+        copytoCanvas(bron3.getWidth() * 2, 0, bron3, canvas);
+        //bron3.write("rainbowLeBron3");
+        
+        // ------pic 4, recursion (top left)------
+        Picture bron4 = new Picture("images\\collage\\bron.jpg");
+        
         canvas.explore();
     }
     
     /**
-     * Blend method (copy every other pixel and display MJ in the back)
-     * @param new Picture to blend with LeBron
+     * Recursive function (will keep overlapping a smaller picture in the top left)
      */
-    public static Picture blend(Picture newp)
+    
+    /**
+     * Rainbow shephard fairey (take the greyscale average of the current pixel and then display a ROYGBV in the range)
+     * @param main picture
+     * @return modified main picture
+     */
+    public static Picture shephard(Picture bron)
     {
-        int width = pic.getWidth();
+        Pixel[] pixels; pixels = bron.getPixels(); // create array of pixels
+        Color red = new Color(255,0,0);
+        Color orange = new Color(255,151,0);
+        Color yellow = new Color(251,255,95);
+        Color green = new Color(0,255,1);
+        Color blue = new Color(0,169,255);
+        Color purple = new Color(217,153,255);
+        Color pink = new Color(255,208,246);
+        for (Pixel spot : pixels)
+        {
+            int avg = (int)((spot.getRed() + spot.getGreen() + spot.getBlue()) / 3.0);
+            if (avg < 36)
+                spot.setColor(red);
+            else if (avg < 72)
+                spot.setColor(orange);
+            else if (avg < 108)
+                spot.setColor(yellow);
+            else if (avg < 144)
+                spot.setColor(green);
+            else if (avg < 180)
+                spot.setColor(blue);
+            else if (avg < 216)
+                spot.setColor(purple);
+            else
+                spot.setColor(pink);
+        }
+        
+        return bron;
+    }
+    
+    /**
+     * Blend method (overwrite the color of every other pixel)
+     * @param main picture, new Picture to blend with main picture
+     * @return blended main picture
+     */
+    public static Picture blend(Picture bron, Picture newp)
+    {
+        int width = bron.getWidth();
         
         // loop through all the rows
-        for (int y = 0; y < pic.getHeight(); y++)
+        for (int y = 0; y < bron.getHeight(); y++)
         {
             // loop through all columns
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < width; x+=2) // every other pixel for blend effect
             {
-                leftPixel = pic.getPixel(x,y);
-                rightPixel = pic.getPixel(width - 1 - x, y);
-                rightPixel.setColor(leftPixel.getColor());
-                
+                Pixel replace = bron.getPixel(x,y);
+                Color color = (newp.getPixel(x,y)).getColor();
+                replace.setColor(color);
             }
         }
         
-        return pic;
+        return bron;
     }
     
     /**
      * Method to mirror around a vertical line in the middle of the picture based on the width
+     * @param main picture
+     * @return mirrored main picture
      */
     public static Picture mirrorVertical(Picture apic)
     {
@@ -110,16 +164,16 @@ public class Collage
     /**
      * Add two ints to the parameters and that's the place you want target to go onto the canvas
      */
-    public static void copytoCanvas(Picture source, Picture target)
+    public static void copytoCanvas(int x, int y, Picture source, Picture target)
     {
         Pixel sourcePix = null;
         Pixel targetPix = null;
         
         // loop through the columns (targetX is starting point on Canvas)
-        for (int sourceX = 0, targetX = 0; sourceX < source.getWidth(); sourceX++, targetX++)
+        for (int sourceX = 0, targetX = x; sourceX < source.getWidth(); sourceX++, targetX++)
         {
             // loop through the rows
-            for (int sourceY = 0, targetY = 0; sourceY < source.getHeight(); sourceY++, targetY++)
+            for (int sourceY = 0, targetY = y; sourceY < source.getHeight(); sourceY++, targetY++)
             {
                 sourcePix = source.getPixel(sourceX, sourceY);
                 targetPix = target.getPixel(targetX, targetY);
@@ -128,27 +182,6 @@ public class Collage
         }
         
     }
-    
-    /**
-     * Add two ints to the parameters and that's the place you want target to go onto the canvas
-     */
-    public static void copytoCanvasSmaller(Picture source, Picture target) 
-    {
-        // recursion copy to a x,y on the source
-        Pixel sourcePix = null;
-        Pixel targetPix = null;
-        
-        // loop through the columns (targetX is starting point on Canvas) sourceX+=2 for make smaller, sourceX+0.5 for make larger
-        for (int sourceX = 0, targetX = 0; sourceX < source.getWidth(); sourceX+=2, targetX++)
-        {
-            // loop through the rows                                        sourceY+=2 for make smaller, sourceY+0.5 for make larger
-            for (int sourceY = 0, targetY = 0; sourceY < source.getHeight(); sourceY+=2, targetY++)
-            {
-                sourcePix = source.getPixel(sourceX, sourceY);
-                targetPix = target.getPixel(targetX, targetY);
-                targetPix.setColor(sourcePix.getColor());
-            }
-        }
         
     }
-}
+
