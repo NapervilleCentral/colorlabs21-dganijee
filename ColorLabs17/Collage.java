@@ -21,55 +21,55 @@ public class Collage
         Picture bron1 = new Picture("images\\collage\\bron.jpg");
         mirrorVertical(bron1);
         copytoCanvas(0,0,bron1, canvas);
-        //bron1.write("mirroredLeBron1");
+        //bron1.write("images\\collage\\mirroredLeBron1.jpg");
         
         // ------pic 2,blend with goat------
         Picture bron2 = new Picture("images\\collage\\bron.jpg");
         blend(bron2, new Picture("images\\collage\\goat.jpg"));
         copytoCanvas(bron2.getWidth(),0, bron2, canvas);
-        //bron2.write("blendedLeBron2");
+        //bron2.write("images\\collage\\blendedLeBron2.jpg");
         
         // ------pic 3, shephard fairey------
         Picture bron3 = new Picture("images\\collage\\bron.jpg");
         shephard(bron3);
         copytoCanvas(bron3.getWidth() * 2, 0, bron3, canvas);
-        //bron3.write("rainbowLeBron3");
+        //bron3.write("images\\collage\\rainbowLeBron3.jpg");
         
         // ------pic 4, recursion (top left)------
         Picture bron4 = new Picture("images\\collage\\bron.jpg");
         recursive(bron4);
         copytoCanvas(0, bron4.getHeight(), bron4, canvas);
-        //bron4.write("recursiveLeBron4");
+        //bron4.write("images\\collage\\recursiveLeBron4.jpg");
         
         // ------pic 5, rotate 180 degrees------
         Picture bron5 = new Picture("images\\collage\\bron.jpg");
         rotate180(bron5);
         copytoCanvas(bron5.getWidth(), bron5.getHeight(), bron5, canvas);
-        //bron5.write("rotate180LeBron5");
+        //bron5.write("images\\collage\\rotate180LeBron5.jpg");
         
         // ------pic 6, blue tinted ------
         Picture bron6 = new Picture("images\\collage\\bron.jpg");
         bluetint(bron6);
         copytoCanvas(2*bron6.getWidth(), bron6.getHeight(), bron6, canvas);
-        //bron6.write("bluetintLeBron6");
+        //bron6.write("images\\collage\\bluetintLeBron6.jpg");
         
         // ------pic 7, edge detection ------
         Picture bron7 = new Picture("images\\collage\\bron.jpg");
         edge(bron7,5);
         copytoCanvas(0, 2* bron6.getHeight(), bron7, canvas);
-        //bron7.write("edgeDetectionLeBron7");
+        //bron7.write("images\\collage\\edgeDetectionLeBron7.jpg");
         
         // ------pic 8, pixelate ------
         Picture bron8 = new Picture("images\\collage\\bron.jpg");
         pixelate(bron8,20);
         copytoCanvas(bron8.getWidth(), 2* bron6.getHeight(), bron8, canvas);
-        //bron8.write("pixelateLeBron8");
+        //bron8.write("images\\collage\\pixelateLeBron8.jpg");
         
         // ------pic 9, negate ------
         Picture bron9 = new Picture("images\\collage\\bron.jpg");
         negate(bron9);
         copytoCanvas(2*bron9.getWidth(), 2* bron9.getHeight(), bron9, canvas);
-        //bron9.write("negateLeBron9");
+        //bron9.write("images\\collage\\negateLeBron9.jpg");
         
         canvas.explore();
     }

@@ -1,26 +1,32 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
-------------------------------------------------------------------------
+This collage uses a LeBron James photo (bron.jpg) as the base image, and goat.jpg
+used in the blend. The 9 pictures on the canvas are in a 3x3 grid:
 
-PROJECT TITLE: Shephard Fairey Lab
-PURPOSE OF PROJECT: To learn how to use the pixels library
-VERSION or DATE: 11/16/2025
-HOW TO START THIS PROJECT: Refer to Color Lab / Textpicture17 notes
-AUTHORS: Danial Ganijee
-USER INSTRUCTIONS: Simply compile, then run.
+Top row:
+1. Mirror Vertical - copies the left half of the picture onto the right half,
+   mirrored around the vertical center line.
+2. Blend - overwrites every other column of the LeBron picture with pixels from
+   the goat picture, blending the two together.
+3. Shephard Fairey - takes the average RGB value of each pixel and replaces it
+   with one of seven ROYGBV+pink colors based on which range it falls into.
 
+Middle row:
+4. Recursive - shrinks the picture in half by sampling every other pixel, then
+   pastes the small copy into the top-left corner. The function calls itself on
+   the small copy.
+5. Rotate 180 - swaps each pixel with the pixel at the opposite
+   corner, flipping the picture upside-down.
+6. Blue Tint - cuts the red and green values in half and increases the blue
+   value by 1.5x, giving the picture a blue color tint.
 
-Critiqued by Chris Lew: 
-"sf1 is creative, but I would recommend staying somewhat consistent with colors, that way the gradient will pop more and you can see some depth and shadows. Sf2 did that, but the colors don't vary in shade much so it doesn't give you depth. Sf3 is way better, you vary shades of the same color but they're lighter/darker than each other so it gives you depth."
+Bottom row:
+7. Edge Detection - compares each pixel's brightness to the pixel below it.
+   If the difference is small, the pixel is painted white. If the difference
+   is large (an edge), the pixel is painted black.
+8. Pixelate - breaks the picture into 20x20 squares and fills each square
+   with the color of its top-left pixel.
+9. Negate - flips every color channel to its opposite (255 - value)
 
-
-My Personal Progression:
-sf1 - I wanted to go for a thermal design, hence why I picked red, orange, green, yellow and blue. The problem I felt that is that you could only really see the depth if red/orange were next to each other. You couldn't get a sense of depth with colors that vary (like red and green). I felt like it clashed too much and wasn't as good as I imagined it being, so taking Chris' feedback I decided to switch to a more consistent color palette.
-
-sf2 - I think I did a much better job with making the palette more consistent. You can start to see more depth, BUT I didn't vary the colors in shade enough. A lot of depth and shadows gets washed out because I didn't pick different enough shades.
-
-sf3 - I tried to use lighter colors, but I think there can still be more variety. I stayed with the same shade of blue and messed around with different light/darker iterations of that shade in the RGB color picker, but I think if I used similar colors and also different shades of that color it would look a lot better. This is much better than sf2 but I can still make it better.
-
-sf_FINAL_USE_THIS - I did a much better job, it is a much better and refined iteration compared to the last one. Each one of the five colors are very different In shade, despite all being blue. You can clearly see the depth in this picture, even seeing the cameras and the "lab rules" sign in the back. You can also see how the lighting hits my face based on the shades. I am way more proud of this piece than the other two.
+Required transformations:
+- Mirror: pic 1 (vertical mirror)
+- Original manipulation: pic 3 (Shephard Fairey rainbow filter)
+- Recursive manipulation: pic 4 
