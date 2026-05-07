@@ -63,7 +63,7 @@ public class Collage
         // only loop through half the pixels since we'd swap them back if we looped through all
         for(int y = 0; y < (height/2); y++) // look through rows
         {
-            for (int x = 0; x < (width/2); x++) // look through columns
+            for (int x = 0; x < width; x++) // look through columns
             {
                 Pixel topPix = bron.getPixel(x,y);
                 Pixel bottomPix = bron.getPixel(width - 1 - x, height - 1 - y);
