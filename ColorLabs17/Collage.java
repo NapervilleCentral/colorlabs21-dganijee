@@ -15,10 +15,10 @@ public class Collage
     
     public static void main(String[] args)
     {
-        Picture bron1 = new Picture("images\\collage\\bron.jpg");
         Picture canvas = new Picture("images\\collage\\canvas.jpg");
         
         // ------pic 1, mirror around vertical point------
+        Picture bron1 = new Picture("images\\collage\\bron.jpg");
         mirrorVertical(bron1);
         copytoCanvas(0,0,bron1, canvas);
         //bron1.write("mirroredLeBron1");
@@ -52,7 +52,7 @@ public class Collage
         int width = bron.getWidth();
         int height = bron.getHeight();
         
-        // base case (if the bron pic is too small to shrink in half)
+        // base case (if the bron pic is too small to shrink) picture bigger
         if (width < 2 || height < 2)
         {
             return bron;
@@ -65,12 +65,12 @@ public class Collage
         {
             for (int x = 0; x < (width/2); x++) // look through columns
             {
-                Color color = bron.getPixel(x*2, y*2).getColor();
-                small.getPixel(x,y).setColor(color);
+                Color color = bron.getPixel(x*2, y*2).getColor(); // copy every other pixel from bron and get its color
+                small.getPixel(x,y).setColor(color); // set the smaller pic's pixel color to that color
             }
         }
         
-        // call function again on the small copy, then paste to canvas after
+        // call function again on the small copy
         recursive(small);
         copytoCanvas(0,0,small,bron); // i basically made my own canvas using the original pic as the canvas
         
