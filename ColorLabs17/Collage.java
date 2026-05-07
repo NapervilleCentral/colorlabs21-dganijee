@@ -90,16 +90,17 @@ public class Collage
                 Color color = bron.getPixel(squareX, squareY).getColor();
                 
                 // copy that color to every pixel in that square
-                for (Pixel spot : bron.getPixels())
+                // loop conditions make sure that the pixel is within the block
+                for (int y = squareY; y < squareY + squareSize && y < height; y++)
                 {
-                    if ((spot.getX() >= squareX && spot.getX() < squareX + squareSize) && (spot.getY() >= squareY && spot.getY() < squareY + squareSize))// if pixel is within square
+                    for (int x = squareX; x < squareX + squareSize && x < width; x++)
                     {
-                        spot.setColor(color);
+                        bron.getPixel(x,y).setColor(color);
                     }
                 }
+                
             }
         }
-        
         
         return bron;
     }
