@@ -41,19 +41,86 @@ public class Collage
         copytoCanvas(0, bron4.getHeight(), bron4, canvas);
         //bron4.write("recursiveLeBron4");
         
-        // ------pic 5, rotate bron 180 degrees------
+        // ------pic 5, rotate 180 degrees------
         Picture bron5 = new Picture("images\\collage\\bron.jpg");
         rotate180(bron5);
         copytoCanvas(bron5.getWidth(), bron5.getHeight(), bron5, canvas);
         //bron5.write("rotate180LeBron5");
         
-        // ------pic 6, blue tinted lebron------
+        // ------pic 6, blue tinted ------
         Picture bron6 = new Picture("images\\collage\\bron.jpg");
         bluetint(bron6);
         copytoCanvas(2*bron6.getWidth(), bron6.getHeight(), bron6, canvas);
-        //bron6.write("6");
+        //bron6.write("bluetintLeBron6");
+        
+        // ------pic 7, edge detection ------
+        Picture bron7 = new Picture("images\\collage\\bron.jpg");
+        edge(bron7,5);
+        copytoCanvas(0, 2* bron6.getHeight(), bron7, canvas);
+        //bron7.write("edgeDetectionLeBron7");
+        
+        // ------pic 8, pixelate ------
+        Picture bron8 = new Picture("images\\collage\\bron.jpg");
+        pixelate(bron8,10);
+        copytoCanvas(bron8.getWidth(), 2* bron6.getHeight(), bron8, canvas);
+        //bron8.write("pixelateLeBron8");
         
         canvas.explore();
+    }
+    
+    /**
+     * Pixelate
+     * What it is: break off the picture into square sections and fill each square with one solid color
+     * For simplicity i decided to take top left pixel's color.
+     * @param bron pic
+     * @param squareSize (how big is the square section, bigger means more pixelated)
+     * @return pixelated bron
+     */
+    public static Picture pixelate(Picture bron, int squareSize)
+    {
+        int width = bron.getWidth();
+        int height = bron.getHeight();
+        
+        
+    }
+    
+    /**
+     * Edge detection
+     * What it is: compares each pixels avg RGB val to the one below it. If similar, paint the top pixel white. If different,
+     * paint it black. 
+     * @param lebron picture
+     * @return edge detected lebron
+     */
+    public static Picture edge(Picture bron, double amount) // amount changes the threshhold between similar/different
+    {
+        int width = bron.getWidth();
+        int height = bron.getHeight();
+        
+        // since we compare every bottom pixel, don't compare to bottom row otherwise it'll mess up the pic
+        for (int y = 0; y < height - 1; y++) // look through rows
+        {
+            for (int x = 0; x < width; x++) //look through columns
+            {
+                // get both bottom and top pixel
+                Pixel topPix = bron.getPixel(x,y);
+                Pixel bottomPix = bron.getPixel(x,y+1);
+                
+                // calculate average RGB value
+                double topVal = (topPix.getRed() + topPix.getGreen() + topPix.getBlue())/3.0;
+                double bottomVal = (bottomPix.getRed() + bottomPix.getGreen() + bottomPix.getBlue())/3.0;
+                
+                //find the difference
+                double difference = Math.abs(topVal - bottomVal); // don't want negative numbers, messes up picture
+                
+                // compare difference to amount the user set (i can play with this value to get the best result)
+                if (difference < amount)
+                    topPix.setColor(Color.WHITE);
+                else
+                    topPix.setColor(Color.BLACK);
+            }
+        }
+        
+        return bron;
     }
     
     /**
