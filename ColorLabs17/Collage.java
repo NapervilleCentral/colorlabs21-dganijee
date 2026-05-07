@@ -81,7 +81,27 @@ public class Collage
         int width = bron.getWidth();
         int height = bron.getHeight();
         
+        // outer loops iterate by squareSize so it can reach every block's top left pixel so it can get the color
+        for (int squareY = 0; squareY < height; squareY += squareSize)
+        {
+            for (int squareX = 0; squareX < width; squareX += squareSize)
+            {
+                // get the top left pixels color
+                Color color = bron.getPixel(squareX, squareY).getColor();
+                
+                // copy that color to every pixel in that square
+                for (Pixel spot : bron.getPixels())
+                {
+                    if ((spot.getX() >= squareX && spot.getX() < squareX + squareSize) && (spot.getY() >= squareY && spot.getY() < squareY + squareSize))// if pixel is within square
+                    {
+                        spot.setColor(color);
+                    }
+                }
+            }
+        }
         
+        
+        return bron;
     }
     
     /**
