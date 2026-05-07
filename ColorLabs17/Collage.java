@@ -2,13 +2,14 @@
 /**
  * My Final Project Picture Collage
  *
- * @author Dan
+ * @author Dan Ganijee
  * @version 5/5/2026
  */
 
 import java.awt.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
+
 public class Collage
 {
     
@@ -36,6 +37,9 @@ public class Collage
         
         // ------pic 4, recursion (top left)------
         Picture bron4 = new Picture("images\\collage\\bron.jpg");
+        recursive(bron4);
+        copytoCanvas(0, bron4.getHeight(), bron4, canvas);
+        //bron4.write("recursiveLeBron4");
         
         canvas.explore();
     }
@@ -43,6 +47,35 @@ public class Collage
     /**
      * Recursive function (will keep overlapping a smaller picture in the top left)
      */
+    public static Picture recursive(Picture bron)
+    {
+        int width = bron.getWidth();
+        int height = bron.getHeight();
+        
+        // base case (if the bron pic is too small to shrink in half)
+        if (width < 2 || height < 2)
+        {
+            return bron;
+        }
+        
+        // make a half-sized bron pic
+        Picture small = new Picture(width/2, height/2);
+        
+        for(int y = 0; y < (height/2); y++) // look through rows
+        {
+            for (int x = 0; x < (width/2); x++) // look through columns
+            {
+                Color color = bron.getPixel(x*2, y*2).getColor();
+                small.getPixel(x,y).setColor(color);
+            }
+        }
+        
+        // call function again on the small copy, then paste to canvas after
+        recursive(small);
+        copytoCanvas(0,0,small,bron); // i basically made my own canvas using the original pic as the canvas
+        
+        return bron;
+    }
     
     /**
      * Rainbow shephard fairey (take the greyscale average of the current pixel and then display a ROYGBV in the range)
