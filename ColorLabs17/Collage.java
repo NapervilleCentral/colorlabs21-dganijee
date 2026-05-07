@@ -45,9 +45,33 @@ public class Collage
         Picture bron5 = new Picture("images\\collage\\bron.jpg");
         rotate180(bron5);
         copytoCanvas(bron5.getWidth(), bron5.getHeight(), bron5, canvas);
-        //bron5.write("recursiveLeBron4");
+        //bron5.write("rotate180LeBron5");
+        
+        // ------pic 6, blue tinted lebron------
+        Picture bron6 = new Picture("images\\collage\\bron.jpg");
+        bluetint(bron6);
+        copytoCanvas(2*bron6.getWidth(), bron6.getHeight(), bron6, canvas);
+        //bron6.write("6");
         
         canvas.explore();
+    }
+    
+    /**
+     * bluetint - adds a blue tint to lebron picture by boosting the B value and reducing the R and G value of each pixel
+     * @param lebron pic
+     * @return bluetinted lebron pic
+     */
+    public static Picture bluetint(Picture bron)
+    {
+        Pixel[] pixels = bron.getPixels();
+        for (Pixel spot:pixels)
+        {
+            spot.setRed((int)(spot.getRed() * 0.5)); // cut red in half
+            spot.setGreen((int)(spot.getGreen() * 0.5)); // same thing with green
+            spot.setBlue((int)(spot.getBlue() * 1.5)); // increase blue
+        }
+        
+        return bron;
     }
     
     /**
@@ -66,8 +90,9 @@ public class Collage
             for (int x = 0; x < width; x++) // look through columns
             {
                 Pixel topPix = bron.getPixel(x,y);
-                Pixel bottomPix = bron.getPixel(width - 1 - x, height - 1 - y);
+                Pixel bottomPix = bron.getPixel(width - 1 - x, height - 1 - y); //-1 for n-1 correct index
                 
+                // swap the colors over
                 Color temporary = topPix.getColor();
                 topPix.setColor(bottomPix.getColor());
                 bottomPix.setColor(temporary);
