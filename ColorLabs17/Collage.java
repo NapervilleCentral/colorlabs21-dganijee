@@ -61,11 +61,36 @@ public class Collage
         
         // ------pic 8, pixelate ------
         Picture bron8 = new Picture("images\\collage\\bron.jpg");
-        pixelate(bron8,10);
+        pixelate(bron8,20);
         copytoCanvas(bron8.getWidth(), 2* bron6.getHeight(), bron8, canvas);
         //bron8.write("pixelateLeBron8");
         
+        // ------pic 9, negate ------
+        Picture bron9 = new Picture("images\\collage\\bron.jpg");
+        negate(bron9);
+        copytoCanvas(2*bron9.getWidth(), 2* bron9.getHeight(), bron9, canvas);
+        //bron9.write("negateLeBron9");
+        
         canvas.explore();
+    }
+    
+    /**
+     * Negate -- flips every color to its opposite (255 - value)
+     * @param bron pic
+     * @return negated bron pic
+     */
+    public static Picture negate(Picture bron)
+    {
+        Pixel[] pixels = bron.getPixels();
+        
+        for (Pixel spot : pixels)
+        {
+            spot.setRed(255-spot.getRed());
+            spot.setGreen(255-spot.getGreen());
+            spot.setBlue(255-spot.getBlue());
+        }
+        
+        return bron;
     }
     
     /**
