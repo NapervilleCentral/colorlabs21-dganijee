@@ -41,11 +41,46 @@ public class Collage
         copytoCanvas(0, bron4.getHeight(), bron4, canvas);
         //bron4.write("recursiveLeBron4");
         
+        // ------pic 5, rotate bron 180 degrees------
+        Picture bron5 = new Picture("images\\collage\\bron.jpg");
+        rotate180(bron5);
+        copytoCanvas(bron5.getWidth(), bron5.getHeight(), bron5, canvas);
+        //bron5.write("recursiveLeBron4");
+        
         canvas.explore();
     }
     
     /**
+     * Rotates bron 180 degrees by swapping each pixel with the other pixel at the opposite corner
+     * @param bron picture obj
+     * @return the rotated bron picture
+     */
+    public static Picture rotate180(Picture bron)
+    {
+        int width = bron.getWidth();
+        int height = bron.getHeight();
+        
+        // only loop through half the pixels since we'd swap them back if we looped through all
+        for(int y = 0; y < (height/2); y++) // look through rows
+        {
+            for (int x = 0; x < (width/2); x++) // look through columns
+            {
+                Pixel topPix = bron.getPixel(x,y);
+                Pixel bottomPix = bron.getPixel(width - 1 - x, height - 1 - y);
+                
+                Color temporary = topPix.getColor();
+                topPix.setColor(bottomPix.getColor());
+                bottomPix.setColor(temporary);
+            }
+        }
+        
+        return bron;
+    }
+    
+    /**
      * Recursive function (will keep overlapping a smaller picture in the top left)
+     * @param LeBron picture obj
+     * @return recursive LeBron pic
      */
     public static Picture recursive(Picture bron)
     {
